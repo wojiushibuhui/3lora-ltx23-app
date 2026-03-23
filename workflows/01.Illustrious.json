@@ -1,0 +1,240 @@
+{
+  "3": {
+    "inputs": {
+      "seed": 992319403037305,
+      "steps": 30,
+      "cfg": 7,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1,
+      "model": [
+        "23",
+        0
+      ],
+      "positive": [
+        "6",
+        0
+      ],
+      "negative": [
+        "7",
+        0
+      ],
+      "latent_image": [
+        "5",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "K采样器"
+    }
+  },
+  "4": {
+    "inputs": {
+      "ckpt_name": "SDXL/smoothMixIllustrious2_illustrious2NoobaiV4.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Checkpoint加载器(简易)"
+    }
+  },
+  "5": {
+    "inputs": {
+      "width": 1024,
+      "height": 1536,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "空Latent"
+    }
+  },
+  "6": {
+    "inputs": {
+      "text": "(EyesHD:1.2), (4k,8k,Ultra HD), masterpiece, best quality, ultra-detailed, very aesthetic, sharp focus, depth of field, ray tracing, best lighting, detailed illustration, detailed background, cinematic, beautiful face, beautiful eyes, BREAK ambient occlusion, raytracing, soft lighting, absolutely eye-catching, intricate cinematic background, BREAK 8K, illustrating, CG, clear skin, ultra-detailed-eyes, detailed background, mystical girl, eyelashes BREAK (qiandaiyiyu:0.85), (soleil $soleilmtfbwy03$:0.6), (godiva ghoul:0.65), (anniechromes:0.5), (close-up:1.5), BREAK Astral Traveler, cosmic guardian, flowing celestial robes, starlight essence, gemstone forehead adornment, wisps of nebula, luminescent markings, zero gravity hair, galaxy eyes, BREAK (qiandaiyiyu:0.85), (soleil $soleilmtfbwy03$:0.6), (godiva ghoul:0.65), (anniechromes:0.5), looking at viewer, glowing energy hands, ornate rings, translucent sleeves, subtle makeup, portrait, close-up, deep space background, eye focus, finger frame, BREAK (rella:1.2), (redum4:1.2) (au $d elete$:1.2) (dino $dinoartforame$:1.1), wlop, cinematic, epic, distant planets and stars",
+      "clip": [
+        "28",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP文本编码器"
+    }
+  },
+  "7": {
+    "inputs": {
+      "text": " (worst quality, low quality, extra digits:1.4),(extra fingers), (bad hands), missing fingers, unaestheticXL2v10, child, loli, (watermark), censored, sagging breasts,embedding:SmoothNoob_Negative-neg, embedding:SmoothNegative_Hands-neg, ",
+      "clip": [
+        "28",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP文本编码器"
+    }
+  },
+  "8": {
+    "inputs": {
+      "samples": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE解码"
+    }
+  },
+  "9": {
+    "inputs": {
+      "filename_prefix": "20260107/image_",
+      "images": [
+        "27",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "保存图像"
+    }
+  },
+  "20": {
+    "inputs": {
+      "lora_name": "Sdxl/MGE_V6.1_IL_Final_R1.safetensors",
+      "strength_model": 0.85,
+      "model": [
+        "4",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "LoRA加载器(仅模型)"
+    }
+  },
+  "21": {
+    "inputs": {
+      "lora_name": "Sdxl/ppw_v8_Illuv2stable_128.safetensors",
+      "strength_model": 0.4,
+      "model": [
+        "20",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "LoRA加载器(仅模型)"
+    }
+  },
+  "22": {
+    "inputs": {
+      "lora_name": "Sdxl/绪儿_厚涂构图光影质感增强V3.safetensors",
+      "strength_model": 0.3,
+      "model": [
+        "21",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "LoRA加载器(仅模型)"
+    }
+  },
+  "23": {
+    "inputs": {
+      "lora_name": "Sdxl/ma1ma1helmes_b-000014.safetensors",
+      "strength_model": 0.45,
+      "model": [
+        "22",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "LoRA加载器(仅模型)"
+    }
+  },
+  "26": {
+    "inputs": {
+      "model_name": "4x_foolhardy_Remacri.pth"
+    },
+    "class_type": "UpscaleModelLoader",
+    "_meta": {
+      "title": "放大模型加载器"
+    }
+  },
+  "27": {
+    "inputs": {
+      "per_batch": 16,
+      "upscale_model": [
+        "26",
+        0
+      ],
+      "images": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "ImageUpscaleWithModelBatched",
+    "_meta": {
+      "title": "图像批次通过模型放大"
+    }
+  },
+  "28": {
+    "inputs": {
+      "stop_at_clip_layer": -2,
+      "clip": [
+        "4",
+        1
+      ]
+    },
+    "class_type": "CLIPSetLastLayer",
+    "_meta": {
+      "title": "CLIP设置停止层"
+    }
+  },
+  "_api_config": {
+    "enabledParams": {
+      "3:seed": true,
+      "3:steps": false,
+      "3:cfg": false,
+      "3:denoise": false,
+      "5:width": true,
+      "5:height": true,
+      "5:batch_size": true,
+      "6:text": true,
+      "7:text": false,
+      "20:strength_model": false,
+      "21:strength_model": false,
+      "22:lora_name": false,
+      "22:strength_model": false,
+      "23:strength_model": false,
+      "27:per_batch": false,
+      "28:stop_at_clip_layer": false
+    },
+    "formValues": {
+      "3:seed": 992319403037305,
+      "3:steps": 30,
+      "3:cfg": 7,
+      "3:denoise": 1,
+      "5:width": 1024,
+      "5:height": 1536,
+      "5:batch_size": 1,
+      "6:text": "(EyesHD:1.2), (4k,8k,Ultra HD), masterpiece, best quality, ultra-detailed, very aesthetic, sharp focus, depth of field, ray tracing, best lighting, detailed illustration, detailed background, cinematic, beautiful face, beautiful eyes, BREAK ambient occlusion, raytracing, soft lighting, absolutely eye-catching, intricate cinematic background, BREAK 8K, illustrating, CG, clear skin, ultra-detailed-eyes, detailed background, mystical girl, eyelashes BREAK (qiandaiyiyu:0.85), (soleil $soleilmtfbwy03$:0.6), (godiva ghoul:0.65), (anniechromes:0.5), (close-up:1.5), BREAK Astral Traveler, cosmic guardian, flowing celestial robes, starlight essence, gemstone forehead adornment, wisps of nebula, luminescent markings, zero gravity hair, galaxy eyes, BREAK (qiandaiyiyu:0.85), (soleil $soleilmtfbwy03$:0.6), (godiva ghoul:0.65), (anniechromes:0.5), looking at viewer, glowing energy hands, ornate rings, translucent sleeves, subtle makeup, portrait, close-up, deep space background, eye focus, finger frame, BREAK (rella:1.2), (redum4:1.2) (au $d elete$:1.2) (dino $dinoartforame$:1.1), wlop, cinematic, epic, distant planets and stars",
+      "7:text": " (worst quality, low quality, extra digits:1.4),(extra fingers), (bad hands), missing fingers, unaestheticXL2v10, child, loli, (watermark), censored, sagging breasts,embedding:SmoothNoob_Negative-neg, embedding:SmoothNegative_Hands-neg, ",
+      "20:strength_model": 0.85,
+      "21:strength_model": 0.4,
+      "22:lora_name": "Sdxl/绪儿_厚涂构图光影质感增强V3.safetensors",
+      "22:strength_model": 0.3,
+      "23:strength_model": 0.45,
+      "27:per_batch": 16,
+      "28:stop_at_clip_layer": -2
+    }
+  }
+}

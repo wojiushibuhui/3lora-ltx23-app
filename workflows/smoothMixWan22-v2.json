@@ -1,0 +1,506 @@
+{
+  "7": {
+    "inputs": {
+      "text": "色调艳丽，过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，背景人很多，倒着走, censored, mosaic censoring, bar censor, pixelated, glowing, bloom, blurry, day, out of focus, low detail, bad anatomy, ugly, overexposed, underexposed, distorted face, extra limbs, cartoonish, 3d render artifacts, duplicate people, unnatural lighting, bad composition, missing shadows, low resolution, poorly textured, glitch, noise, grain, static, motionless, still frame, overall grayish, worst quality, low quality, JPEG compression artifacts, subtitles, stylized, artwork, painting, illustration, cluttered background, many people in background, three legs, walking backward, zoom out, zoom in, mouth speaking, moving mouth, talking, speaking, mute speaking, unnatural skin tone, discolored eyelid, red eyelids, red upper eyelids, no red eyeshadow, closed eyes, no wide-open innocent eyes, poorly drawn hands, extra fingers, fused fingers, poorly drawn face, deformed, disfigured, malformed limbs, thighs, fog, mist, voluminous eyelashes, blush,",
+      "clip": [
+        "38",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP文本编码器"
+    }
+  },
+  "8": {
+    "inputs": {
+      "samples": [
+        "58",
+        0
+      ],
+      "vae": [
+        "39",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE解码"
+    }
+  },
+  "37": {
+    "inputs": {
+      "unet_name": "Wan/smoothMixWan2214BI2V_i2vV20High.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "UNET加载器"
+    }
+  },
+  "38": {
+    "inputs": {
+      "clip_name": "umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+      "type": "wan",
+      "device": "cpu"
+    },
+    "class_type": "CLIPLoader",
+    "_meta": {
+      "title": "CLIP加载器"
+    }
+  },
+  "39": {
+    "inputs": {
+      "vae_name": "wan_2.1_vae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "VAE加载器"
+    }
+  },
+  "50": {
+    "inputs": {
+      "width": [
+        "64",
+        1
+      ],
+      "height": [
+        "64",
+        2
+      ],
+      "length": [
+        "141",
+        0
+      ],
+      "batch_size": 1,
+      "positive": [
+        "90",
+        0
+      ],
+      "negative": [
+        "7",
+        0
+      ],
+      "vae": [
+        "39",
+        0
+      ],
+      "clip_vision_output": [
+        "107",
+        0
+      ],
+      "start_image": [
+        "64",
+        0
+      ]
+    },
+    "class_type": "WanImageToVideo",
+    "_meta": {
+      "title": "Wan图像到视频"
+    }
+  },
+  "52": {
+    "inputs": {
+      "image": "3ab3c4332eebdbfaeae58462e2b19731cf79e9a12816f4a90a0b826ee5ae65fb.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "加载图像"
+    }
+  },
+  "54": {
+    "inputs": {
+      "shift": 8.000000000000002,
+      "model": [
+        "145",
+        0
+      ]
+    },
+    "class_type": "ModelSamplingSD3",
+    "_meta": {
+      "title": "模型采样算法SD3"
+    }
+  },
+  "55": {
+    "inputs": {
+      "shift": 8.000000000000002,
+      "model": [
+        "146",
+        0
+      ]
+    },
+    "class_type": "ModelSamplingSD3",
+    "_meta": {
+      "title": "模型采样算法SD3"
+    }
+  },
+  "56": {
+    "inputs": {
+      "unet_name": "Wan/smoothMixWan2214BI2V_i2vV20Low.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "UNET加载器"
+    }
+  },
+  "57": {
+    "inputs": {
+      "add_noise": "enable",
+      "noise_seed": [
+        "82",
+        0
+      ],
+      "steps": 6,
+      "cfg": 1,
+      "sampler_name": "euler_ancestral",
+      "scheduler": "simple",
+      "start_at_step": 0,
+      "end_at_step": 3,
+      "return_with_leftover_noise": "enable",
+      "model": [
+        "54",
+        0
+      ],
+      "positive": [
+        "50",
+        0
+      ],
+      "negative": [
+        "50",
+        1
+      ],
+      "latent_image": [
+        "50",
+        2
+      ]
+    },
+    "class_type": "KSamplerAdvanced",
+    "_meta": {
+      "title": "K采样器(高级)"
+    }
+  },
+  "58": {
+    "inputs": {
+      "add_noise": "disable",
+      "noise_seed": 0,
+      "steps": 6,
+      "cfg": 1,
+      "sampler_name": "euler_ancestral",
+      "scheduler": "simple",
+      "start_at_step": 3,
+      "end_at_step": 10000,
+      "return_with_leftover_noise": "disable",
+      "model": [
+        "55",
+        0
+      ],
+      "positive": [
+        "50",
+        0
+      ],
+      "negative": [
+        "50",
+        1
+      ],
+      "latent_image": [
+        "57",
+        0
+      ]
+    },
+    "class_type": "KSamplerAdvanced",
+    "_meta": {
+      "title": "K采样器(高级)"
+    }
+  },
+  "63": {
+    "inputs": {
+      "frame_rate": [
+        "147",
+        0
+      ],
+      "loop_count": 0,
+      "filename_prefix": "2026-01-18/wan22_",
+      "format": "video/h264-mp4",
+      "pix_fmt": "yuv420p",
+      "crf": 19,
+      "save_metadata": false,
+      "trim_to_audio": false,
+      "pingpong": false,
+      "save_output": true,
+      "images": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "VHS_VideoCombine",
+    "_meta": {
+      "title": "合并为视频"
+    }
+  },
+  "64": {
+    "inputs": {
+      "width": [
+        "149",
+        0
+      ],
+      "height": [
+        "150",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "keep_proportion": "resize",
+      "pad_color": "0, 0, 0",
+      "crop_position": "center",
+      "divisible_by": 16,
+      "device": "cpu",
+      "image": [
+        "52",
+        0
+      ]
+    },
+    "class_type": "ImageResizeKJv2",
+    "_meta": {
+      "title": "Resize Image v2"
+    }
+  },
+  "82": {
+    "inputs": {
+      "seed": 369923193621474
+    },
+    "class_type": "Seed (rgthree)",
+    "_meta": {
+      "title": "随机种"
+    }
+  },
+  "88": {
+    "inputs": {
+      "value": [
+        "151",
+        0
+      ]
+    },
+    "class_type": "PrimitiveStringMultiline",
+    "_meta": {
+      "title": "Positive"
+    }
+  },
+  "90": {
+    "inputs": {
+      "text": [
+        "88",
+        0
+      ],
+      "clip": [
+        "38",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP文本编码器"
+    }
+  },
+  "107": {
+    "inputs": {
+      "crop": "none",
+      "clip_vision": [
+        "108",
+        0
+      ],
+      "image": [
+        "52",
+        0
+      ]
+    },
+    "class_type": "CLIPVisionEncode",
+    "_meta": {
+      "title": "CLIP视觉编码"
+    }
+  },
+  "108": {
+    "inputs": {
+      "clip_name": "clip_vision_h.safetensors"
+    },
+    "class_type": "CLIPVisionLoader",
+    "_meta": {
+      "title": "CLIP视觉加载器"
+    }
+  },
+  "141": {
+    "inputs": {
+      "expression": "a*16+1",
+      "a": [
+        "142",
+        0
+      ]
+    },
+    "class_type": "MathExpression|pysssss",
+    "_meta": {
+      "title": "数学表达式"
+    }
+  },
+  "142": {
+    "inputs": {
+      "value": 5
+    },
+    "class_type": "INTConstant",
+    "_meta": {
+      "title": "整数常量"
+    }
+  },
+  "145": {
+    "inputs": {
+      "lora_name": "Lightx2v/lightx2v_I2V_14B_480p_cfg_step_distill_rank256_bf16.safetensors",
+      "strength_model": 3,
+      "model": [
+        "37",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "LoRA加载器(仅模型)"
+    }
+  },
+  "146": {
+    "inputs": {
+      "lora_name": "Lightx2v/lightx2v_I2V_14B_480p_cfg_step_distill_rank256_bf16.safetensors",
+      "strength_model": 1,
+      "model": [
+        "56",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "LoRA加载器(仅模型)"
+    }
+  },
+  "147": {
+    "inputs": {
+      "Number": "16"
+    },
+    "class_type": "Float",
+    "_meta": {
+      "title": "浮点"
+    }
+  },
+  "149": {
+    "inputs": {
+      "value": 480
+    },
+    "class_type": "INTConstant",
+    "_meta": {
+      "title": "整数常量"
+    }
+  },
+  "150": {
+    "inputs": {
+      "value": 720
+    },
+    "class_type": "INTConstant",
+    "_meta": {
+      "title": "整数常量"
+    }
+  },
+  "151": {
+    "inputs": {
+      "value": "a slow dolly-in begins at 50mm, f/2.2, framing the subject’s face in a medium close-up as her eyes—those piercing, electric-blue irises—gently shift focus from the viewer to a point just beyond the frame’s edge, suggesting an internal reckoning. The camera glides forward with a whisper of resistance, mirroring the subtle tension in her jawline, while a single, cool LED light source from the upper left casts sharp highlights along her silver bangs and the collar of her dark uniform, rendering the fabric’s crisp white stripes with high-contrast texture. Behind her, a deep crimson ribbon tied in a loose bow at her shoulder catches the ambient glow, its saturated hue bleeding into the cool shadows of the environment. The air is still, thick with the scent of ozone and old paper, and a faint, rhythmic ticking from unseen machinery pulses beneath the silence. *"
+    },
+    "class_type": "PrimitiveStringMultiline",
+    "_meta": {
+      "title": "字符串（多行）"
+    }
+  },
+  "_api_config": {
+    "enabledParams": {
+      "7:text": false,
+      "37:weight_dtype": false,
+      "38:type": false,
+      "38:device": false,
+      "50:batch_size": false,
+      "52:image": true,
+      "54:shift": false,
+      "55:shift": false,
+      "56:weight_dtype": false,
+      "57:steps": false,
+      "57:cfg": false,
+      "57:add_noise": false,
+      "57:start_at_step": false,
+      "57:end_at_step": false,
+      "57:return_with_leftover_noise": false,
+      "58:steps": false,
+      "58:cfg": false,
+      "58:add_noise": false,
+      "58:noise_seed": false,
+      "58:start_at_step": false,
+      "58:end_at_step": false,
+      "58:return_with_leftover_noise": false,
+      "63:loop_count": false,
+      "63:format": false,
+      "63:pix_fmt": false,
+      "63:crf": false,
+      "64:upscale_method": false,
+      "64:keep_proportion": false,
+      "64:pad_color": false,
+      "64:crop_position": false,
+      "64:divisible_by": false,
+      "64:device": false,
+      "82:seed": true,
+      "107:crop": false,
+      "141:expression": false,
+      "142:value": true,
+      "145:strength_model": false,
+      "146:strength_model": false,
+      "147:Number": false,
+      "149:value": true,
+      "150:value": true,
+      "151:value": true
+    },
+    "formValues": {
+      "7:text": "色调艳丽，过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，背景人很多，倒着走, censored, mosaic censoring, bar censor, pixelated, glowing, bloom, blurry, day, out of focus, low detail, bad anatomy, ugly, overexposed, underexposed, distorted face, extra limbs, cartoonish, 3d render artifacts, duplicate people, unnatural lighting, bad composition, missing shadows, low resolution, poorly textured, glitch, noise, grain, static, motionless, still frame, overall grayish, worst quality, low quality, JPEG compression artifacts, subtitles, stylized, artwork, painting, illustration, cluttered background, many people in background, three legs, walking backward, zoom out, zoom in, mouth speaking, moving mouth, talking, speaking, mute speaking, unnatural skin tone, discolored eyelid, red eyelids, red upper eyelids, no red eyeshadow, closed eyes, no wide-open innocent eyes, poorly drawn hands, extra fingers, fused fingers, poorly drawn face, deformed, disfigured, malformed limbs, thighs, fog, mist, voluminous eyelashes, blush,",
+      "37:weight_dtype": "default",
+      "38:type": "wan",
+      "38:device": "cpu",
+      "50:batch_size": 1,
+      "52:image": {},
+      "54:shift": 8.000000000000002,
+      "55:shift": 8.000000000000002,
+      "56:weight_dtype": "default",
+      "57:steps": 6,
+      "57:cfg": 1,
+      "57:add_noise": "enable",
+      "57:start_at_step": 0,
+      "57:end_at_step": 3,
+      "57:return_with_leftover_noise": "enable",
+      "58:steps": 6,
+      "58:cfg": 1,
+      "58:add_noise": "disable",
+      "58:noise_seed": 0,
+      "58:start_at_step": 3,
+      "58:end_at_step": 10000,
+      "58:return_with_leftover_noise": "disable",
+      "63:loop_count": 0,
+      "63:format": "video/h264-mp4",
+      "63:pix_fmt": "yuv420p",
+      "63:crf": 19,
+      "64:upscale_method": "lanczos",
+      "64:keep_proportion": "resize",
+      "64:pad_color": "0, 0, 0",
+      "64:crop_position": "center",
+      "64:divisible_by": 16,
+      "64:device": "cpu",
+      "82:seed": 369923193621474,
+      "107:crop": "none",
+      "141:expression": "a*16+1",
+      "142:value": 3,
+      "145:strength_model": 3,
+      "146:strength_model": 1,
+      "147:Number": "16",
+      "149:value": 480,
+      "150:value": 640,
+      "151:value": "a slow dolly-in begins at 50mm, f/2.2, framing the subject’s face in a medium close-up as her eyes—those piercing, electric-blue irises—gently shift focus from the viewer to a point just beyond the frame’s edge, suggesting an internal reckoning. The camera glides forward with a whisper of resistance, mirroring the subtle tension in her jawline, while a single, cool LED light source from the upper left casts sharp highlights along her silver bangs and the collar of her dark uniform, rendering the fabric’s crisp white stripes with high-contrast texture. Behind her, a deep crimson ribbon tied in a loose bow at her shoulder catches the ambient glow, its saturated hue bleeding into the cool shadows of the environment. The air is still, thick with the scent of ozone and old paper, and a faint, rhythmic ticking from unseen machinery pulses beneath the silence. *"
+    }
+  }
+}

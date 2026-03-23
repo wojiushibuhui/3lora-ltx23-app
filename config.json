@@ -1,0 +1,40 @@
+{
+  "startupUpdates": {
+    "workflows": false,
+    "appYaml": false
+  },
+  "pages": {
+    "model-ready": false,
+    "quick-model-download": false,
+    "system-management": true,
+    "image-to-video": true,
+    "wan22-smoothmix-v2": true,
+    "image-to-video-test": false,
+    "image-to-video-wan22tssp": true,
+    "image-to-video-wan22swz": true,
+    "image-to-video-wan22rwqy": true,
+    "wan22-animate-dzqy-v2": true,
+    "wan22-lightx2v-i2v": true,
+    "qwenedit-multiple-angles-g": true,
+    "video-to-video-test": false,
+    "ui-components-showcase": false,
+    "output-management": true,
+    "system-settings": true,
+    "resource-migration": true,
+    "workflow-to-api": true,
+    "about": true,
+    "model-link-query": true,
+    "ps-plugin-link": false
+  },
+  "features": {
+    "dataDisk": false,
+    "codewithgpuDownload": false,
+    "enableSymlink": true,
+    "showUpdateControlPanel": true
+  },
+  "defaultPage": "system-management",
+  "links": {
+    "modelLinkQuery": "/modellink/symlinks.html",
+    "psPluginLink": ""
+  }
+}

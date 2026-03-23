@@ -1,0 +1,12 @@
+node_modules/
+*.log
+*.pid
+*.out
+*.tar.gz
+*.bak
+*.bak_*
+*.truncated_*
+*.orig
+*.rej
+.DS_Store
+Thumbs.db

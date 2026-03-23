@@ -1,0 +1,202 @@
+{
+  "3": {
+    "inputs": {
+      "seed": 851204692357677,
+      "steps": 8,
+      "cfg": 2.5,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1,
+      "model": [
+        "66",
+        0
+      ],
+      "positive": [
+        "6",
+        0
+      ],
+      "negative": [
+        "7",
+        0
+      ],
+      "latent_image": [
+        "58",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "K采样器"
+    }
+  },
+  "6": {
+    "inputs": {
+      "text": "超广角动感运营插画，3d插画风格海报，创意字体设计，将字体进行抽象变形，创造出扁平化节奏动感，大标题中文字“镜像问题，训练问题”，小标题中文字“VIP-Q群1046279436”，一张皮克斯3D动画风格设计工作室的可爱海报，上面有一个的年轻女孩坐在画板前，在画板上画小猫，周围是各种五颜六色的创意工具，如ipad、铅笔、钢笔和电脑屏幕。背景充满了充满活力的霓虹灯和未来主义的技术元素。设计强调明亮的色彩，突出创意和创新，所有细节都显得清晰细致、富有想象力的艺术家的风格增强了插图的梦幻感，画面元素丰富，氛围感极强，辛烷值，发光，氛围感，发光边缘，人物光影细节，整体偏发光蓝色色系，细腻，前后明暗关系",
+      "clip": [
+        "73",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP文本编码器"
+    }
+  },
+  "7": {
+    "inputs": {
+      "text": "ng_deepnegative_v1_75t,(badhandv4:1.2),EasyNegative,(worst quality:2),",
+      "clip": [
+        "38",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP文本编码器"
+    }
+  },
+  "8": {
+    "inputs": {
+      "samples": [
+        "3",
+        0
+      ],
+      "vae": [
+        "39",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE解码"
+    }
+  },
+  "38": {
+    "inputs": {
+      "clip_name": "qwen_2.5_vl_7b_fp8_scaled.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    },
+    "class_type": "CLIPLoader",
+    "_meta": {
+      "title": "CLIP加载器"
+    }
+  },
+  "39": {
+    "inputs": {
+      "vae_name": "qwen_image_vae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "VAE加载器"
+    }
+  },
+  "58": {
+    "inputs": {
+      "width": 864,
+      "height": 1536,
+      "batch_size": 1
+    },
+    "class_type": "EmptySD3LatentImage",
+    "_meta": {
+      "title": "空Latent_SD3"
+    }
+  },
+  "60": {
+    "inputs": {
+      "filename_prefix": "20251228/image_",
+      "images": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "保存图像"
+    }
+  },
+  "66": {
+    "inputs": {
+      "shift": 3.1000000000000005,
+      "model": [
+        "73",
+        0
+      ]
+    },
+    "class_type": "ModelSamplingAuraFlow",
+    "_meta": {
+      "title": "模型采样算法AuraFlow"
+    }
+  },
+  "73": {
+    "inputs": {
+      "lora_name": "Qwen/Qwen-Image-Lightning-8steps-V2.0-bf16.safetensors",
+      "strength_model": 1,
+      "strength_clip": 1,
+      "model": [
+        "74",
+        0
+      ],
+      "clip": [
+        "38",
+        0
+      ]
+    },
+    "class_type": "LoraLoader",
+    "_meta": {
+      "title": "LoRA加载器"
+    }
+  },
+  "74": {
+    "inputs": {
+      "model_name": "nunchaku/svdq-fp4_r128-qwen-image.safetensors",
+      "cpu_offload": "auto",
+      "num_blocks_on_gpu": 1,
+      "use_pin_memory": "disable"
+    },
+    "class_type": "NunchakuQwenImageDiTLoader",
+    "_meta": {
+      "title": "Nunchaku Qwen-Image DiT Loader"
+    }
+  },
+  "_api_config": {
+    "enabledParams": {
+      "3:seed": false,
+      "3:steps": false,
+      "3:cfg": false,
+      "3:denoise": false,
+      "6:text": true,
+      "7:text": false,
+      "38:type": false,
+      "38:device": false,
+      "58:width": false,
+      "58:height": false,
+      "58:batch_size": true,
+      "66:shift": false,
+      "73:strength_model": false,
+      "73:strength_clip": false,
+      "74:cpu_offload": false,
+      "74:num_blocks_on_gpu": false,
+      "74:use_pin_memory": false
+    },
+    "formValues": {
+      "3:seed": 851204692357677,
+      "3:steps": 8,
+      "3:cfg": 2.5,
+      "3:denoise": 1,
+      "6:text": "超广角动感运营插画，3d插画风格海报，创意字体设计，将字体进行抽象变形，创造出扁平化节奏动感，大标题中文字“镜像问题，训练问题”，小标题中文字“VIP-Q群1046279436”，一张皮克斯3D动画风格设计工作室的可爱海报，上面有一个的年轻女孩坐在画板前，在画板上画小猫，周围是各种五颜六色的创意工具，如ipad、铅笔、钢笔和电脑屏幕。背景充满了充满活力的霓虹灯和未来主义的技术元素。设计强调明亮的色彩，突出创意和创新，所有细节都显得清晰细致、富有想象力的艺术家的风格增强了插图的梦幻感，画面元素丰富，氛围感极强，辛烷值，发光，氛围感，发光边缘，人物光影细节，整体偏发光蓝色色系，细腻，前后明暗关系",
+      "7:text": "ng_deepnegative_v1_75t,(badhandv4:1.2),EasyNegative,(worst quality:2),",
+      "38:type": "qwen_image",
+      "38:device": "default",
+      "58:width": 864,
+      "58:height": 1536,
+      "58:batch_size": 1,
+      "66:shift": 3.1000000000000005,
+      "73:strength_model": 1,
+      "73:strength_clip": 1,
+      "74:cpu_offload": "auto",
+      "74:num_blocks_on_gpu": 1,
+      "74:use_pin_memory": "disable"
+    }
+  }
+}

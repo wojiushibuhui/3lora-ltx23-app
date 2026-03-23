@@ -1,0 +1,5 @@
+root        755      1  1 17:47 ?        00:00:21 node server.js
+root        836    816  0 17:47 ?        00:00:02 /root/miniconda3/bin/python /root/miniconda3/bin/tensorboard --host 0.0.0.0 --port 6007 --logdir /root/tf-logs
+root        839    816  0 17:47 ?        00:00:04 /root/miniconda3/bin/python /root/miniconda3/bin/jupyter-lab --allow-root --config=/init/jupyter/jupyter_config.py
+root       1233    836  0 17:47 ?        00:00:00 /root/miniconda3/lib/python3.12/site-packages/tensorboard_data_server/bin/server --logdir=/root/tf-logs --reload=5 --samples-per-plugin= --port=0 --port-file=/tmp/tensorboard_data_server_896cwirs/port --die-after-stdin --error-file=/tmp/tensorboard_data_server_896cwirs/startup_error
+root       1452      1  0 17:47 ?        00:00:11 /root/miniconda3/bin/python main.py --cpu --disable-all-custom-nodes --listen 127.0.0.1 --port 6006 --enable-cors-header * --database-url sqlite:////root/ComfyUI/user/comfyui-6006.db
